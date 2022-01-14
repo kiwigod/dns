@@ -43,7 +43,8 @@ $dns->getRecords(['A', 'MX']); // returns both A and MX records
 ### Testing
 
 ``` bash
-composer test
+docker build . -t dns
+docker run --rm -itv $PWD:/app -w /app dns vendor/bin/phpunit
 ```
 
 ### Changelog

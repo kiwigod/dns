@@ -12,7 +12,7 @@ class DnsTest extends TestCase
     /** @var \Spatie\Dns\Dns */
     protected $dns;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -124,7 +124,7 @@ class DnsTest extends TestCase
             //some dns servers use tabs, let's replace them by spaces
             $records = preg_replace('/\s+/', ' ', $records);
 
-            $this->assertContains("IN {$type}", $records);
+            $this->assertStringContainsString("IN {$type}", $records);
         }
     }
 
@@ -136,7 +136,7 @@ class DnsTest extends TestCase
             //some dns servers use tabs, let's replace them by spaces
             $records = preg_replace('/\s+/', ' ', $records);
 
-            $this->assertNotContains("IN {$type}", $records);
+            $this->assertStringNotContainsString("IN {$type}", $records);
         }
     }
 }
